@@ -1,0 +1,525 @@
+<html lang="en"><head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Graphic Design Portfolio</title>
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #333;
+            transition: background-color 0.6s ease-in-out;
+        }
+
+        h1, h2, p {
+            margin: 0;
+            transition: color 0.6s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: color 0.6s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 50px;
+            color: #444;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: color 0.6s ease-in-out;
+        }
+
+        p {
+            text-align: center;
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 1.2rem;
+            color: #666;
+            transition: color 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        p:hover {
+            transform: translateY(-5px);
+            color: #444;
+        }
+
+        /* Hero Section */
+        .hero {  
+            background: url('https://i.pinimg.com/564x/52/56/b6/5256b6bfc9f679d79c1b2129acf91df1.jpg');
+         background-size: cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: #333;
+            transition: background-color 0.6s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            letter-spacing: 3px;
+            color: #333;
+            animation: slideDown 1.5s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #333;
+            margin-top: 20px;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .hero:hover p {
+            transform: translateY(-10px);
+            color: #333;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #e0e0e0 0%, #ffffff 100%);
+            text-align: center;
+            color: #fff;
+        }
+
+        .portfolio h2 {
+            margin-bottom: 20px;
+            font-size: 2.8rem;
+            color: #444;
+            transition: color 0.6s ease-in-out;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            cursor: pointer;
+            transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            background: url('https://i.pinimg.com/564x/52/56/b6/5256b6bfc9f679d79c1b2129acf91df1.jpg');
+            background-size: cover;;
+            text-align: center;
+            color: #333;
+        }
+
+        .about h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .about p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            transition: color 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        .about:hover p {
+            transform: scale(1.05);
+            color: #333;
+        }
+
+        /* Image List Section */
+        .image-list {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+            text-align: center;
+        }
+
+        .image-list h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .image-list-container {
+            display: flex;
+            gap: 20px;
+            max-width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .image-item {
+            min-width: 320px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .image-item:hover .image-overlay {
+            opacity: 1;
+        }
+
+        /* Goals Section */
+        .goals {
+            padding: 80px 20px;
+            background: url('https://i.pinimg.com/564x/52/56/b6/5256b6bfc9f679d79c1b2129acf91df1.jpg');
+            background-size: cover;
+            text-align: center;
+        }
+
+        .goals h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .goals p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+            transition: color 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        .goals:hover p {
+            transform: scale(1.05);
+            color: #333;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .modal-content {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 50%;
+            max-height: 90%;
+            overflow: auto;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .modal-content img:hover {
+            transform: scale(1.05);
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .close:hover {
+            color: #ff7e5f;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Khadija Nasasrah Portfolio</h1>
+        <p>Explore my creative journey through design, branding, and digital art.</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <h2>some of my Projects</h2>
+        <div class="portfolio-grid">
+        <!-- Project 1 -->
+        <div class="portfolio-item" data-gallery="gallery1">
+            <img src="c:\Users\user\Desktop\website\REPLACE THIS SCREEN11112111101121111111111.jpg" alt="Project 1">
+            <div class="portfolio-overlay">Fleur optics</div>
+            </div>
+            <!-- Project 2 -->
+            <div class="portfolio-item" data-gallery="gallery2">
+                <img src="c:\Users\user\Desktop\website\223.jpg" alt="Project 2">
+                <div class="portfolio-overlay">Marouf Coffee</div>
+            </div>
+            <!-- Project 3 -->
+            <div class="portfolio-item" data-gallery="gallery3">
+                <img src="c:\Users\user\Desktop\website\kk.jpg" alt="Project 3">
+                <div class="portfolio-overlay">Location juice</div>
+            </div>
+            <!-- Project 4 -->
+            <div class="portfolio-item" data-gallery="gallery4">
+                <img src="c:\Users\user\Desktop\website\Asset 16rr6uuy.png" alt="Project 4">
+                <div class="portfolio-overlay">the balloon shop</div>
+            </div>
+            <!-- Project 5 -->
+            <div class="portfolio-item" data-gallery="gallery5">
+                <img src="https://via.placeholder.com/600x400" alt="Project 5">
+                <div class="portfolio-overlay">UI/UX Design</div>
+            </div>
+            <!-- Project 6 -->
+            <div class="portfolio-item" data-gallery="gallery6">
+                <img src="https://via.placeholder.com/600x400" alt="Project 6">
+                <div class="portfolio-overlay">UI/UX Design</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate graphic designer with a knack for creating unique and visually appealing designs. My work spans across various fields, including branding, illustration, and digital media. I aim to inspire and captivate audiences with my creative work.</p>
+    </section>
+
+    <!-- Interactive Image List Section -->
+    <section class="image-list">
+        <h2>Project Details: UI/UX Design</h2>
+        <div class="image-list-container">
+            <!-- Image 1 -->
+            <div class="image-item">
+                <img src="https://via.placeholder.com/300x200" alt="Image 1">
+                <div class="image-overlay">Wireframe Design</div>
+            </div>
+            <!-- Image 2 -->
+            <div class="image-item">
+                <img src="https://via.placeholder.com/300x200" alt="Image 2">
+                <div class="image-overlay">Prototype Screens</div>
+            </div>
+            <!-- Image 3 -->
+            <div class="image-item">
+                <img src="https://via.placeholder.com/300x200" alt="Image 3">
+                <div class="image-overlay">Final Product</div>
+            </div>
+            <!-- Image 4 -->
+            <div class="image-item">
+                <img src="https://via.placeholder.com/300x200" alt="Image 4">
+                <div class="image-overlay">User Flow</div>
+            </div>
+             <!-- Image 5 -->
+            <div class="image-item">
+                <img src="https://via.placeholder.com/300x200" alt="Image 1">
+                <div class="image-overlay">Wireframe Design</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="goals">
+        <h2>My Goals</h2>
+        <p>My goal is to evolve as a designer by embracing new technologies and continuously improving my skills. I aspire to work on global projects that push the boundaries of design, while also making meaningful contributions to the creative community. I want to blend art and technology to create immersive experiences that leave a lasting impression.</p>
+    </section>
+
+    <!-- Modal for Project Galleries -->
+    <div id="gallery1" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img src="c:\Users\user\Desktop\website\8811c9189209649.65a873fd81922.jpg" alt="Gallery Image 1">
+            <img src="c:\Users\user\Desktop\website\9ffcca189209649.65a873fd80c45.jpg" alt="Gallery Image 2">
+            <img src="c:\Users\user\Desktop\website\jj.jpg" alt="Gallery Image 3">
+            <img src="c:\Users\user\Desktop\website\fe058c189209649.65a873fd7f643.jpg" alt="Gallery Image 4">
+        </div>
+    </div>
+
+    <div id="gallery2" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img src="c:\Users\user\Desktop\website\rm363-a002-rm390-mockup-10.jpg" alt="Gallery Image 1">
+            <img src="c:\Users\user\Desktop\website\407.jpg" alt="Gallery Image 2">
+            <img src="c:\Users\user\Desktop\website\mockup 1.jpg" alt="Gallery Image 3">
+        </div>
+    </div>
+
+    <div id="gallery3" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img src="c:\Users\user\Desktop\website\432.jpg" alt="Gallery Image 1">
+            <img src="c:\Users\user\Desktop\website\73.jpg" alt="Gallery Image 2">
+            <img src="c:\Users\user\Desktop\website\bussines card kk.jpg" alt="Gallery Image 3">
+        </div>
+    </div>
+
+    <div id="gallery4" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img src="c:\Users\user\Desktop\website\tp238-rm355-02-mockup.jpg" alt="Gallery Image 1">
+            <img src="c:\Users\user\Desktop\website\382.jpg" alt="Gallery Image 2">
+            <img src="c:\Users\user\Desktop\website\Artboard 4.png" alt="Gallery Image 3">
+        </div>
+    </div>
+    <div id="gallery5" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 1">
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 2">
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 3">
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 4">
+        </div>
+    </div>
+    <div id="gallery6" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 1">
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 2">
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 3">
+            <img src="https://via.placeholder.com/800x600" alt="Gallery Image 4">
+        </div>
+    </div>
+    <script>
+        // Get all portfolio items
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        // Get all modals
+        const modals = document.querySelectorAll('.modal');
+        // Get all close buttons
+        const closeButtons = document.querySelectorAll('.close');
+
+        // Open modal on portfolio item click
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const galleryId = item.getAttribute('data-gallery');
+                const modal = document.getElementById(galleryId);
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close modal on close button click
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.parentElement.parentElement.style.display = 'none';
+            });
+        });
+
+        // Close modal on outside click
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        });
+    </script>
+
+
+</body></html>
